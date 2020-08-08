@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 interface ISort {
   desc: Boolean;
+  setSort(): void;
 }
 
 const DateSortContainer = styled.div`
@@ -15,10 +16,14 @@ const DateSortContainer = styled.div`
   justify-content: center;
   align-items: center;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   span {
     margin-right: 4px;
   }
-  ${({ desc }: ISort) =>
+  ${({ desc }: Pick<ISort, "desc">) =>
     desc
       ? `
   svg {
@@ -27,8 +32,8 @@ const DateSortContainer = styled.div`
       : ""}
 `;
 
-const DateSort = ({ desc }: ISort) => (
-  <DateSortContainer desc={desc}>
+const DateSort = ({ desc, setSort }: ISort) => (
+  <DateSortContainer desc={desc} onClick={setSort}>
     <span>Date</span>
     <svg
       width="11"

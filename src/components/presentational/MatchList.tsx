@@ -2,10 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import Container from "./Container";
 import Match, { IMatch } from "./Match";
-import DateSort from "./DateSort";
+import DateSort from "../container/Sort";
 
 interface IMatchList {
-  sortDesc: Boolean;
   matches: IMatch[];
 }
 
@@ -15,10 +14,10 @@ const Divider = styled.hr`
   border-top: 1px solid #e2e5ea;
 `;
 
-const MatchList = ({ sortDesc, matches }: IMatchList) => (
+const MatchList = ({ matches }: IMatchList) => (
   <Container style={{ marginTop: 16 }}>
     <div style={{ textAlign: "right" }}>
-      <DateSort desc={sortDesc} />
+      <DateSort />
     </div>
 
     {matches.map((match, idx) => (
