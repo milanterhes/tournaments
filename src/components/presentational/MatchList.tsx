@@ -5,27 +5,26 @@ import Match, { IMatch } from "./Match";
 import DateSort from "./DateSort";
 
 interface IMatchList {
-  sortDesc: Boolean,
-  matches: IMatch[]
+  sortDesc: Boolean;
+  matches: IMatch[];
 }
 
 const Divider = styled.hr`
   width: calc(100% + 30px);
   margin-left: -16px;
-  border-top: 1px solid #E2E5EA;
-`
+  border-top: 1px solid #e2e5ea;
+`;
 
-const MatchList = ({sortDesc, matches}: IMatchList) => (
-  <Container style={{marginTop: 16}}>
-
-    <div style={{textAlign: "right"}}>
-      <DateSort desc={sortDesc}/>
+const MatchList = ({ sortDesc, matches }: IMatchList) => (
+  <Container style={{ marginTop: 16 }}>
+    <div style={{ textAlign: "right" }}>
+      <DateSort desc={sortDesc} />
     </div>
 
     {matches.map((match, idx) => (
       <>
         <Match {...match} />
-        {idx !== matches.length -1 && <Divider />}
+        {idx !== matches.length - 1 && <Divider />}
       </>
     ))}
   </Container>

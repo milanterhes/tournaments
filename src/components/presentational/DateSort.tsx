@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Polygon from "../../polygon.svg";
 
 interface ISort {
   desc: Boolean;
@@ -28,7 +27,7 @@ const DateSortContainer = styled.div`
       : ""}
 `;
 
-const DateSort = ({desc}: ISort) => (
+const DateSort = ({ desc }: ISort) => (
   <DateSortContainer desc={desc}>
     <span>Date</span>
     <svg

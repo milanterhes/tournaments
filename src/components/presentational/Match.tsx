@@ -8,9 +8,9 @@ interface ITeam {
 }
 
 export interface IMatch {
-  time: String,
-  team1: ITeam,
-  team2: ITeam
+  time: String;
+  team1: ITeam;
+  team2: ITeam;
 }
 
 const Time = styled.p`
@@ -39,7 +39,8 @@ const TeamName = styled.span`
 const TeamPoints = styled.span`
   font-size: 21px;
   line-height: 29px;
-  font-weight: ${({ winner }: Pick<ITeam, "winner">) => (winner ? "bold" : "normal")}
+  font-weight: ${({ winner }: Pick<ITeam, "winner">) =>
+    winner ? "bold" : "normal"};
 `;
 
 const Team = (props: ITeam) => (
@@ -50,8 +51,8 @@ const Team = (props: ITeam) => (
 );
 
 Team.defaultProps = {
-  winner: false
-}
+  winner: false,
+};
 
 const MatchContainer = styled.div`
   width: 100%;
@@ -61,12 +62,12 @@ const MatchContainer = styled.div`
   }
 `;
 
-const Match = ({time, team1, team2}: IMatch) => (
+const Match = ({ time, team1, team2 }: IMatch) => (
   <MatchContainer>
-      <Time>{time}</Time>
-      <Team {...team1}/>
-      <Team {...team2}/>
+    <Time>{time}</Time>
+    <Team {...team1} />
+    <Team {...team2} />
   </MatchContainer>
-)
+);
 
 export default Match;

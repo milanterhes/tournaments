@@ -20,7 +20,7 @@ const Date = styled.p`
 `;
 
 const Header = ({ title, date }: IProps) => (
-  <Container style={{borderTop: '6px solid #28b662'}}>
+  <Container style={{ borderTop: "6px solid #28b662" }}>
     <Title>{title}</Title>
     <Date>{date}</Date>
   </Container>
