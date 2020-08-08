@@ -1,15 +1,62 @@
 import React from "react";
-import Header from "./components/presentational/Header";
-import MatchList from "./components/presentational/MatchList";
+import Tournament from "./components/presentational/Tournament";
 
 function App() {
   return (
     <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
-      <Header
-        title="R6: Siege (PC) 5on5 Open Cup #55 Spain"
-        date="21st March 2018"
+      <Tournament
+        sortDesc={false}
+        matches={[{
+          time: "12:51",
+          team1: {
+            name: "Black Lotus",
+            points: 4,
+            winner: true
+          },
+          team2: {
+            name: "Team Lotus",
+            points: 2,
+            winner: false
+          },
+        },{
+          time: "12:51",
+          team1: {
+            name: "Black Lotus",
+            points: 4,
+            winner: true
+          },
+          team2: {
+            name: "Team Lotus",
+            points: 2,
+            winner: false
+          },
+        },{
+          time: "12:51",
+          team1: {
+            name: "Black Lotus",
+            points: 4,
+            winner: true
+          },
+          team2: {
+            name: "Team Lotus",
+            points: 2,
+            winner: false
+          },
+        },{
+          time: "12:51",
+          team1: {
+            name: "Black Lotus",
+            points: 2,
+            winner: false
+          },
+          team2: {
+            name: "Team Lotus",
+            points: 4,
+            winner: true
+          },
+        }]}
+        header={{date: "21st March 2018", title: "R6: Siege (PC) 5on5 Open Cup #55 Spain"}}
       />
-      <MatchList/>
     </div>
   );
 }

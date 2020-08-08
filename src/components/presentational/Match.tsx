@@ -7,7 +7,7 @@ interface ITeam {
   points: Number;
 }
 
-interface IMatch {
+export interface IMatch {
   time: String,
   team1: ITeam,
   team2: ITeam
