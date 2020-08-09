@@ -27,6 +27,28 @@ function reducers(state: any, action: any) {
         ...state,
         sortDesc: action.sortDesc,
       };
+    case Actions.SET_HEADER:
+      return {
+        ...state,
+        tournament: {
+          matches: state.tournament.matches,
+          header: action.header,
+        },
+      };
+    case Actions.SET_MATCHES:
+      return {
+        ...state,
+        tournament: {
+          header: state.tournament.header,
+          matches: action.matches,
+        },
+      };
+    case Actions.START_LOADING:
+      return {
+        ...state,
+        loading: true,
+        tournament: {},
+      };
     default:
       return state;
   }

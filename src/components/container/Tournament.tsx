@@ -1,10 +1,12 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Tournament from "../presentational/Tournament";
 import { IState } from "../../reducers";
+import { fetchTournament } from "../../actions";
 
 const TournamentContainer = () => {
   const state = useSelector((state: IState) => state);
+  const dispatch = useDispatch();
 
   if (state.sortDesc) {
     state.tournament.matches.sort(
@@ -15,6 +17,13 @@ const TournamentContainer = () => {
       (a, b) => b.time.getTime() - a.time.getTime()
     );
   }
+
+  useEffect(() => {
+    console.log("useffect");
+    setTimeout(() => {
+      dispatch(fetchTournament(177165));
+    }, 2000);
+  }, []);
 
   return <Tournament {...state.tournament} />;
 };
