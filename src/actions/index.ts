@@ -1,6 +1,9 @@
-import { ITournament } from "../components/presentational/Tournament";
-import Header, { IProps as IHeader } from "../components/presentational/Header";
+import { IProps as IHeader } from "../components/presentational/Header";
 import { IMatch } from "../components/presentational/Match";
+import mapResultsToMatch, {
+  Result,
+  Contestant,
+} from "../utils/mapResultsToMatch";
 
 export enum Actions {
   SET_SORT = "SET_SORT",
@@ -23,7 +26,7 @@ export function setHeader(header: IHeader) {
   };
 }
 
-export function setMatches(matches: IMatch) {
+export function setMatches(matches: IMatch[]) {
   return {
     type: Actions.SET_MATCHES,
     matches,
@@ -39,12 +42,10 @@ export function startLoading() {
 export function fetchTournament(id: number) {
   return async function (dispatch: any) {
     try {
-      console.log("fetching....");
+      dispatch(startLoading());
       const proxy_url = "https://cors-anywhere.herokuapp.com/";
-      const response = await fetch(
-        proxy_url + "https://api.eslgaming.com/play/v1/leagues/" + id
-      );
-      console.log(response);
+      const esl_url = "https://api.eslgaming.com/play/v1/leagues/" + id;
+      const response = await fetch(proxy_url + esl_url);
       const tournament = await response.json();
       dispatch(
         setHeader({
@@ -52,6 +53,20 @@ export function fetchTournament(id: number) {
           title: tournament.name.normal,
         })
       );
+
+      let [results, contestants] = await Promise.all([
+        fetch(proxy_url + esl_url + "/results"),
+        fetch(proxy_url + esl_url + "/contestants"),
+      ]);
+
+      results = await results.json();
+      contestants = await contestants.json();
+
+      const matches = ((results as unknown) as Result[]).map((r) =>
+        mapResultsToMatch(r, (contestants as unknown) as Contestant[])
+      );
+
+      dispatch(setMatches(matches));
     } catch (error) {
       // TODO: handle error
       console.log(error);

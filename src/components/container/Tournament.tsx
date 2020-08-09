@@ -19,9 +19,8 @@ const TournamentContainer = () => {
   }
 
   useEffect(() => {
-    console.log("useffect");
     setTimeout(() => {
-      dispatch(fetchTournament(177165));
+      dispatch(fetchTournament(185553));
     }, 2000);
   }, []);
 

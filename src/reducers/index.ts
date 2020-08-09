@@ -1,6 +1,5 @@
 import { Actions } from "../actions";
 import { ITournament } from "../components/presentational/Tournament";
-import data from "../components/container/TestData.json";
 
 export interface IState {
   sortDesc: Boolean;
@@ -8,15 +7,12 @@ export interface IState {
 }
 
 export const initialState: IState = {
-  sortDesc: false,
+  sortDesc: true,
   tournament: {
-    header: data.header,
-    matches: data.matches.map((match: any) => {
-      match.time = new Date(
-        new Date().getTime() + Math.floor(Math.random() * 10) * 60000
-      );
-      return match;
-    }),
+    header: {
+      title: "Loading tournament...",
+    },
+    matches: [],
   },
 };
 
@@ -46,8 +42,12 @@ function reducers(state: any, action: any) {
     case Actions.START_LOADING:
       return {
         ...state,
-        loading: true,
-        tournament: {},
+        tournament: {
+          header: {
+            title: "Loading tournament...",
+          },
+          matches: [],
+        },
       };
     default:
       return state;

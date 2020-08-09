@@ -14,19 +14,26 @@ const Divider = styled.hr`
   border-top: 1px solid #e2e5ea;
 `;
 
-const MatchList = ({ matches }: IMatchList) => (
-  <Container style={{ marginTop: 16 }}>
-    <div style={{ textAlign: "right" }}>
-      <DateSort />
-    </div>
+const MatchList = ({ matches }: IMatchList) => {
+  const m =
+    matches.length > 0
+      ? matches.map((match, idx) => (
+          <React.Fragment key={"match-" + idx}>
+            <Match {...match} />
+            {idx !== matches.length - 1 && <Divider />}
+          </React.Fragment>
+        ))
+      : "Loading matches...";
 
-    {matches.map((match, idx) => (
-      <React.Fragment key={"match-" + idx}>
-        <Match {...match} />
-        {idx !== matches.length - 1 && <Divider />}
-      </React.Fragment>
-    ))}
-  </Container>
-);
+  return (
+    <Container style={{ marginTop: 16 }}>
+      <div style={{ textAlign: "right" }}>
+        <DateSort />
+      </div>
+
+      {m}
+    </Container>
+  );
+};
 
 export default MatchList;

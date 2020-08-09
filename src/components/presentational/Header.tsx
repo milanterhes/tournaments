@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import moment from "moment";
 import Container from "./Container";
 
 export interface IProps {
   title: String;
-  date: String;
+  date?: string;
 }
 
 const Title = styled.h2`
@@ -19,11 +20,13 @@ const Date = styled.p`
   margin: 0;
 `;
 
-const Header = ({ title, date }: IProps) => (
-  <Container style={{ borderTop: "6px solid #28b662" }}>
-    <Title>{title}</Title>
-    <Date>{date}</Date>
-  </Container>
-);
+const Header = ({ title, date }: IProps) => {
+  return (
+    <Container style={{ borderTop: "6px solid #28b662" }}>
+      <Title>{title}</Title>
+      <Date>{date ? moment(date).format("Do MMMM YYYY") : ""}</Date>
+    </Container>
+  );
+};
 
 export default Header;

@@ -11,6 +11,8 @@ function App() {
           display: "flex",
           justifyContent: "center",
           flexDirection: "column",
+          alignItems: "center",
+          paddingTop: 10,
         }}
       >
         <Tournament />

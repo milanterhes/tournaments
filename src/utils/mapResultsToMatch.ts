@@ -1,6 +1,6 @@
 import { IMatch, ITeam } from "../components/presentational/Match";
 
-interface Result {
+export interface Result {
   participants: {
     id: Number;
     place: Number;
@@ -9,7 +9,7 @@ interface Result {
   beginAt: string;
 }
 
-interface Contestant {
+export interface Contestant {
   id: Number;
   seed: Number;
   status: String;
