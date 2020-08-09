@@ -1,10 +1,22 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Tournament from "../presentational/Tournament";
-import TestData from "./TestData.json";
+import { IState } from "../../reducers";
 
 const TournamentContainer = () => {
-  return <Tournament {...TestData} />;
+  const state = useSelector((state: IState) => state);
+
+  if (state.sortDesc) {
+    state.tournament.matches.sort(
+      (a, b) => a.time.getTime() - b.time.getTime()
+    );
+  } else {
+    state.tournament.matches.sort(
+      (a, b) => b.time.getTime() - a.time.getTime()
+    );
+  }
+
+  return <Tournament {...state.tournament} />;
 };
 
 export default TournamentContainer;

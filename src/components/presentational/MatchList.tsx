@@ -21,10 +21,10 @@ const MatchList = ({ matches }: IMatchList) => (
     </div>
 
     {matches.map((match, idx) => (
-      <>
+      <React.Fragment key={"match-" + idx}>
         <Match {...match} />
         {idx !== matches.length - 1 && <Divider />}
-      </>
+      </React.Fragment>
     ))}
   </Container>
 );

@@ -3,7 +3,7 @@ import Header, { IProps as IHeaderProps } from "./Header";
 import MatchList from "./MatchList";
 import { IMatch } from "./Match";
 
-interface ITournament {
+export interface ITournament {
   header: IHeaderProps;
   matches: IMatch[];
 }

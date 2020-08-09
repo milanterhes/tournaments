@@ -3,7 +3,7 @@
     {
       "time": "12:51",
       "team1": {
-        "name": "Black Lotus",
+        "name": "Black Lotus Match 1",
         "points": 4,
         "winner": true
       },
@@ -16,7 +16,7 @@
     {
       "time": "12:51",
       "team1": {
-        "name": "Black Lotus",
+        "name": "Black Lotus Match 2",
         "points": 4,
         "winner": true
       },
@@ -29,7 +29,7 @@
     {
       "time": "12:51",
       "team1": {
-        "name": "Black Lotus",
+        "name": "Black Lotus Match 3",
         "points": 4,
         "winner": true
       },
@@ -42,7 +42,7 @@
     {
       "time": "12:51",
       "team1": {
-        "name": "Black Lotus",
+        "name": "Black Lotus Match 4",
         "points": 2,
         "winner": false
       },

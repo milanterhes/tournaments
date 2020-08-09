@@ -1,21 +1,5 @@
 import { createStore } from "redux";
-import { Actions } from "./actions";
-
-const initialState = {
-  sortDesc: false,
-};
-
-function reducers(state: any, action: any) {
-  switch (action.type) {
-    case Actions.SET_SORT:
-      return {
-        ...state,
-        sortDesc: action.sortDesc,
-      };
-    default:
-      return state;
-  }
-}
+import reducers, { initialState } from "./reducers";
 
 let store = createStore(reducers, initialState);
 

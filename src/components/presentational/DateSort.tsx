@@ -24,7 +24,7 @@ const DateSortContainer = styled.div`
     margin-right: 4px;
   }
   ${({ desc }: Pick<ISort, "desc">) =>
-    desc
+    !desc
       ? `
   svg {
     transform: rotate(180deg) translate(0, -50%);

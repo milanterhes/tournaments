@@ -8,7 +8,7 @@ interface ITeam {
 }
 
 export interface IMatch {
-  time: String;
+  time: Date;
   team1: ITeam;
   team2: ITeam;
 }
@@ -64,7 +64,10 @@ const MatchContainer = styled.div`
 
 const Match = ({ time, team1, team2 }: IMatch) => (
   <MatchContainer>
-    <Time>{time}</Time>
+    <Time>
+      {time.getHours()}:
+      {time.getMinutes() > 9 ? time.getMinutes() : "0" + time.getMinutes()}
+    </Time>
     <Team {...team1} />
     <Team {...team2} />
   </MatchContainer>
