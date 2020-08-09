@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-interface ITeam {
+export interface ITeam {
   winner?: Boolean;
   name: String;
   points: Number;
