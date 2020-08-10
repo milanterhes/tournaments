@@ -49,6 +49,16 @@ function reducers(state: any, action: any) {
           matches: [],
         },
       };
+    case Actions.SET_ERROR:
+      return {
+        ...state,
+        tournament: {
+          header: {
+            title: "Error while loading tournament",
+          },
+          matches: [],
+        },
+      };
     default:
       return state;
   }

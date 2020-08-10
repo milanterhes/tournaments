@@ -7,6 +7,7 @@ import mapResultsToMatch, {
 
 export enum Actions {
   SET_SORT = "SET_SORT",
+  SET_ERROR = "SET_ERROR",
   SET_HEADER = "SET_HEADER",
   SET_MATCHES = "SET_MATCHES",
   START_LOADING = "START_LOADING",
@@ -39,10 +40,16 @@ export function startLoading() {
   };
 }
 
+export function setError() {
+  return {
+    type: Actions.SET_ERROR,
+  };
+}
 export function fetchTournament(id: number) {
   return async function (dispatch: any) {
     try {
       dispatch(startLoading());
+      //needed to use a proxy because of cors issues
       const proxy_url = "https://cors-anywhere.herokuapp.com/";
       const esl_url = "https://api.eslgaming.com/play/v1/leagues/" + id;
       const response = await fetch(proxy_url + esl_url);
@@ -68,28 +75,8 @@ export function fetchTournament(id: number) {
 
       dispatch(setMatches(matches));
     } catch (error) {
-      // TODO: handle error
       console.log(error);
+      dispatch(setError());
     }
   };
 }
-
-// export function fetchTournament(id: number) {
-//   return function (dispatch: any) {
-//     dispatch(startLoading());
-//     console.log("fetching");
-//     return fetch("https://api.eslgaming.com/play/v1/leagues/" + id)
-//       .then(
-//         (response) => response.json(),
-//         (error) => console.log("An error occurred.", error)
-//       )
-//       .then((tournament) =>
-//         dispatch(
-//           setHeader({
-//             date: tournament.timeline.inProgress.begin,
-//             title: tournament.name.normal,
-//           })
-//         )
-//       );
-//   };
-// }
