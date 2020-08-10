@@ -3,10 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import Tournament from "../presentational/Tournament";
 import { IState } from "../../reducers";
 import { fetchTournament } from "../../actions";
+import { useParams } from "react-router-dom";
 
 const TournamentContainer = () => {
   const state = useSelector((state: IState) => state);
   const dispatch = useDispatch();
+  const { id } = useParams();
+  console.log(id);
 
   if (state.sortDesc) {
     state.tournament.matches.sort(
@@ -19,7 +22,7 @@ const TournamentContainer = () => {
   }
 
   useEffect(() => {
-    dispatch(fetchTournament(185553));
+    dispatch(fetchTournament(id || 185553));
   }, []);
 
   return <Tournament {...state.tournament} />;
