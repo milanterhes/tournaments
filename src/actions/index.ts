@@ -50,7 +50,7 @@ export function fetchTournament(id: number) {
     try {
       dispatch(startLoading());
       //needed to use a proxy because of cors issues
-      const proxy_url = "https://cors-anywhere.herokuapp.com/";
+      const proxy_url = "https://api.codetabs.com/v1/proxy?quest=";
       const esl_url = "https://api.eslgaming.com/play/v1/leagues/" + id;
       const response = await fetch(proxy_url + esl_url);
       const tournament = await response.json();
